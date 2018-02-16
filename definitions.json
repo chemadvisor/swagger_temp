@@ -596,7 +596,7 @@
 					"type": "array",
 					"description": "A collection of release objects",
 					"items": {
-						"$ref": "#/definitions/Link"
+						"$ref": "Link.json#/Link"
 					}
 				}
 			},
