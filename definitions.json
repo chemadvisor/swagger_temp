@@ -1,74 +1,4 @@
-"definitions": {
-		"SubstanceNames": {
-			"type": "object",
-			"required": ["name"],
-			"properties": {
-				"name": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/SubstanceName"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "names"
-			}
-		},
-		"Inventories": {
-			"type": "object",
-			"required": ["inventory"],
-			"properties": {
-				"inventory": {
-					"type": "array",
-					"description": "A collection of inventory objects",
-					"items": {
-						"$ref": "#/definitions/Inventory"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "inventories"
-			}
-		},
-		"EntryChanges": {
-			"type": "object",
-			"properties": {
-				"entry_change": {
-					"type": "array",
-					"description": "A collection of entry_change objects",
-					"items": {
-						"$ref": "#/definitions/EntryChange"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "entry_changes"
-			}
-		},
-		"Languages": {
-			"type": "object",
-			"properties": {
-				"language": {
-					"type": "array",
-					"description": "A collection of language objects",
-					"items": {
-						"$ref": "#/definitions/Language"
-					}
-				}
-			},
-			"xml": {
-				"name": "source_languages"
-			}
-		},
+	"definitions": {
 		"ApiResponseMessage": {
 			"type": "object",
 			"properties": {
@@ -84,511 +14,6 @@
 				}
 			}
 		},
-		"RelatedSubstance": {
-			"type": "object",
-			"required": ["_id",
-			"direction"],
-			"properties": {
-				"_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"direction": {
-					"type": "string"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "related_substance"
-			}
-		},
-		"Substances": {
-			"type": "object",
-			"required": ["substance"],
-			"properties": {
-				"substance": {
-					"type": "array",
-					"description": "A collection of substance objects",
-					"items": {
-						"$ref": "#/definitions/Substance"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "substances"
-			}
-		},
-		"Entry": {
-			"type": "object",
-			"required": ["_id",
-			"names",
-			"regulatory_list_id",
-			"release_id",
-			"substance_id"],
-			"properties": {
-				"_id": {
-					"type": "string"
-				},
-				"substance_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"regulatory_list_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"release_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"identifiers": {
-					"$ref": "#/definitions/Identifiers"
-				},
-				"names": {
-					"$ref": "#/definitions/SubstanceNames"
-				},
-				"chemical_data": {
-					"$ref": "#/definitions/EntryChemicalData"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"description": "Contains substance level data",
-			"xml": {
-				"name": "entry"
-			}
-		},
-		"Releases": {
-			"type": "object",
-			"required": ["release"],
-			"properties": {
-				"release": {
-					"type": "array",
-					"description": "A collection of release objects",
-					"items": {
-						"$ref": "#/definitions/Release"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "releases"
-			}
-		},
-		"Identifier": {
-			"allOf": [{
-				"$ref": "#/definitions/BaseDataType"
-			},
-			{
-				"type": "object",
-				"properties": {
-					
-				},
-				"description": "Basic class for data types",
-				"xml": {
-					"name": "identifier"
-				}
-			}]
-		},
-		"Language": {
-			"type": "object",
-			"required": ["iso_639_1_code",
-			"iso_639_1_language"],
-			"properties": {
-				"iso_639_1_language": {
-					"type": "string"
-				},
-				"iso_639_1_code": {
-					"type": "string"
-				}
-			},
-			"xml": {
-				"name": "language"
-			}
-		},
-		"Number": {
-			"allOf": [{
-				"$ref": "#/definitions/BaseDataType"
-			},
-			{
-				"type": "object",
-				"required": ["unit",
-				"unit_type"],
-				"properties": {
-					"unit": {
-						"type": "string"
-					},
-					"unit_type": {
-						"type": "string"
-					}
-				},
-				"description": "Basic class for data types",
-				"xml": {
-					"name": "number"
-				}
-			}]
-		},
-		"RegulatoryListChanges": {
-			"type": "object",
-			"properties": {
-				"regulatory_list_change": {
-					"type": "array",
-					"description": "A collection of regulatory_list_change objects",
-					"items": {
-						"$ref": "#/definitions/RegulatoryListChange"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "regulatory_list_changes"
-			}
-		},
-		"Substance": {
-			"type": "object",
-			"required": ["_id",
-			"primary_name"],
-			"properties": {
-				"_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"primary_name": {
-					"type": "string"
-				},
-				"regulatory_burden": {
-					"type": "number",
-					"format": "float"
-				},
-				"identifiers": {
-					"$ref": "#/definitions/Identifiers"
-				},
-				"names": {
-					"$ref": "#/definitions/SubstanceNames"
-				},
-				"related_substances": {
-					"$ref": "#/definitions/RelatedSubstances"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"description": "Contains information about the substance",
-			"xml": {
-				"name": "substance"
-			}
-		},
-		"EntryChemicalData": {
-			"type": "object",
-			"properties": {
-				"record": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Fields"
-					}
-				}
-			},
-			"xml": {
-				"name": "chemical_data"
-			}
-		},
-		"Tags": {
-			"type": "object",
-			"required": ["tag"],
-			"properties": {
-				"tag": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Tag"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "tags"
-			}
-		},
-		"Release": {
-			"type": "object",
-			"required": ["_id",
-			"date"],
-			"properties": {
-				"_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"date": {
-					"type": "string",
-					"format": "date-time"
-				}
-			},
-			"xml": {
-				"name": "release"
-			}
-		},
-		"SubstanceName": {
-			"type": "object",
-			"required": ["iso_639_1_code",
-			"iso_639_1_language",
-			"value"],
-			"properties": {
-				"value": {
-					"type": "string"
-				},
-				"iso_639_1_language": {
-					"type": "string"
-				},
-				"iso_639_1_code": {
-					"type": "string"
-				}
-			},
-			"description": "The chemical name for a specific substance_id",
-			"xml": {
-				"name": "name"
-			}
-		},
-		"RegulatoryList": {
-			"type": "object",
-			"required": ["_id",
-			"name",
-			"source_languages"],
-			"properties": {
-				"_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"name": {
-					"type": "string"
-				},
-				"navigator_link": {
-					"type": "string"
-				},
-				"source_link": {
-					"type": "string"
-				},
-				"description": {
-					"type": "string"
-				},
-				"is_inventory": {
-					"type": "boolean",
-					"default": false
-				},
-				"source_languages": {
-					"$ref": "#/definitions/Languages"
-				},
-				"tags": {
-					"$ref": "#/definitions/Tags"
-				},
-				"entries": {
-					"$ref": "#/definitions/Entries"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"description": "Contains Substance Level Regulatory or Non-Regulatory Data",
-			"xml": {
-				"name": "regulatory_list"
-			}
-		},
-		"RelatedSubstances": {
-			"type": "object",
-			"required": ["related_substance"],
-			"properties": {
-				"related_substance": {
-					"type": "array",
-					"description": "A collection of related_substance objects",
-					"items": {
-						"$ref": "#/definitions/RelatedSubstance"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "related_substances"
-			}
-		},
-		"Text": {
-			"allOf": [{
-				"$ref": "#/definitions/BaseDataType"
-			},
-			{
-				"type": "object",
-				"properties": {
-					
-				},
-				"description": "Basic class for data types",
-				"xml": {
-					"name": "text"
-				}
-			}]
-		},
-		"Entries": {
-			"type": "object",
-			"required": ["entry"],
-			"properties": {
-				"entry": {
-					"type": "array",
-					"description": "A collection of entry objects",
-					"items": {
-						"$ref": "#/definitions/Entry"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "entries"
-			}
-		},
-		"EntryChange": {
-			"type": "object",
-			"required": ["_id",
-			"change_type",
-			"regulatory_list_id",
-			"release_id",
-			"substance_id"],
-			"properties": {
-				"_id": {
-					"type": "string"
-				},
-				"change_type": {
-					"type": "string"
-				},
-				"regulatory_list_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"substance_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"release_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "entry_change"
-			}
-		},
-		"Range": {
-			"allOf": [{
-				"$ref": "#/definitions/BaseDataType"
-			},
-			{
-				"type": "object",
-				"required": ["lower_op",
-				"lower_val",
-				"unit",
-				"unit_type",
-				"upper_op",
-				"upper_val"],
-				"properties": {
-					"lower_op": {
-						"type": "string"
-					},
-					"lower_val": {
-						"type": "number",
-						"format": "double"
-					},
-					"upper_op": {
-						"type": "string"
-					},
-					"upper_val": {
-						"type": "number",
-						"format": "double"
-					},
-					"unit": {
-						"type": "string"
-					},
-					"unit_type": {
-						"type": "string"
-					}
-				},
-				"description": "Basic class for data types",
-				"xml": {
-					"name": "range"
-				}
-			}]
-		},
-		"Code": {
-			"allOf": [{
-				"$ref": "#/definitions/BaseDataType"
-			},
-			{
-				"type": "object",
-				"required": ["code"],
-				"properties": {
-					"code": {
-						"type": "string"
-					}
-				},
-				"description": "Basic class for data types",
-				"xml": {
-					"name": "code"
-				}
-			}]
-		},
-		"RegulatoryListChange": {
-			"type": "object",
-			"required": ["change_type",
-			"regulatory_list_id",
-			"release_id"],
-			"properties": {
-				"change_type": {
-					"type": "string"
-				},
-				"regulatory_list_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"release_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "regulatory_list_change"
-			}
-		},
-		"Fields": {
-			"type": "object",
-			"required": ["field"],
-			"properties": {
-				"field": {
-					"type": "array",
-					"description": "A collection of data_type objects",
-					"items": {
-						"$ref": "#/definitions/BaseDataType"
-					}
-				}
-			},
-			"xml": {
-				"name": "fields"
-			}
-		},
 		"Links": {
 			"type": "object",
 			"properties": {
@@ -596,7 +21,7 @@
 					"type": "array",
 					"description": "A collection of release objects",
 					"items": {
-						"$ref": "Link.json#/Link"
+						"$ref": "https://raw.githubusercontent.com/chemadvisor/swagger_temp/master/definitions.json#/definitions/Link"
 					}
 				}
 			},
@@ -604,95 +29,14 @@
 				"name": "links"
 			}
 		},
-		"BaseDataType": {
-			"type": "object",
-			"required": ["data_type",
-			"name",
-			"prompt",
-			"value"],
-			"discriminator": "data_type",
-			"properties": {
-				"data_type": {
-					"type": "string"
-				},
-				"name": {
-					"type": "string"
-				},
-				"prompt": {
-					"type": "string"
-				},
-				"value": {
-					"type": "string"
-				}
-			},
-			"description": "Basic class for data types",
-			"xml": {
-				"name": "field"
-			}
-		},
-		"Tag": {
-			"type": "object",
-			"required": ["_id",
-			"name"],
-			"properties": {
-				"_id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"name": {
-					"type": "string"
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "tag"
-			}
-		},
-		"RegulatoryLists": {
-			"type": "object",
-			"required": ["regulatory_list"],
-			"properties": {
-				"regulatory_list": {
-					"type": "array",
-					"description": "A collection of regulatory_list objects",
-					"items": {
-						"$ref": "#/definitions/RegulatoryList"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "regulatory_lists"
-			}
-		},
-		"Identifiers": {
-			"type": "object",
-			"properties": {
-				"identifier": {
-					"type": "array",
-					"description": "A collection of identifier objects",
-					"items": {
-						"$ref": "#/definitions/Identifier"
-					}
-				},
-				"links": {
-					"$ref": "#/definitions/Links"
-				}
-			},
-			"xml": {
-				"name": "identifiers"
-			}
-		},
 		"Link": {
 			"type": "object",
-			"required": ["allow",
-			"content_type",
-			"href",
-			"rel"],
+			"required": [
+				"allow",
+				"content_type",
+				"href",
+				"rel"
+			],
 			"properties": {
 				"rel": {
 					"type": "string"
@@ -712,22 +56,279 @@
 				"name": "link"
 			}
 		},
-		"Inventory": {
+		"Widgets": {
 			"type": "object",
+			"description": "A collection of widget objects",
 			"properties": {
-				"regulatory_list": {
-					"$ref": "#/definitions/RegulatoryList"
-				},
-				"is_present": {
-					"type": "boolean",
-					"default": false
+				"widgets": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Widget"
+					}
 				},
 				"links": {
 					"$ref": "#/definitions/Links"
 				}
 			},
 			"xml": {
-				"name": "inventory"
+				"name": "widgets"
+			}
+		},
+		"Widget": {
+			"type": "object",
+			"description": "A collection of metrics, messages and inquiries",
+			"properties": {
+				"metrics": {
+					"$ref": "#/definitions/Metrics"
+				},
+				"messages": {
+					"$ref": "#/definitions/Messages"
+				},
+				"inquiries": {
+					"$ref": "#/definitions/Inquiries"
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "metric"
+			}
+		},
+		"Metrics": {
+			"type": "object",
+			"description": "A collection of metric objects",
+			"properties": {
+				"metrics": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Metric"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "metrics"
+			}
+		},
+		"Metric": {
+			"type": "object",
+			"description": "A collection of labels and data_set objects",
+			"properties": {
+				"labels": {
+					"$ref": "#/definitions/Labels"
+				},
+				"data_sets": {
+					"$ref": "#/definitions/DataSets"
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "metric"
+			}
+		},
+		"Labels": {
+			"type": "object",
+			"description": "A collection of label objects",
+			"properties": {
+				"labels": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Label"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "labels"
+			}
+		},
+		"Label": {
+			"type": "object",
+			"required": [
+				"value"
+			],
+			"properties": {
+				"value": {
+					"type": "string"
+				},
+				"link": {
+					"$ref": "#/definitions/Link"
+				}
+			},
+			"xml": {
+				"name": "label"
+			}
+		},
+		"DataSets": {
+			"type": "object",
+			"description": "A collection of data_set objects",
+			"properties": {
+				"data_sets": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DataSet"
+					}
+				}
+			},
+			"xml": {
+				"name": "data_sets"
+			}
+		},
+		"DataSet": {
+			"type": "object",
+			"description": "A data_set object",
+			"properties": {
+				"label": {
+					"$ref": "#/definitions/Label"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"link": {
+								"$ref": "#/definitions/Link"
+							}
+						}
+					}
+				}
+			},
+			"xml": {
+				"name": "data_set"
+			}
+		},
+		"Inquiries": {
+			"type": "object",
+			"properties": {
+				"parameters": {
+					"type": "array",
+					"description": "A collection of inquiry objects",
+					"items": {
+						"$ref": "#/definitions/Inquiry"
+					}
+				}
+			},
+			"xml": {
+				"name": "parameters"
+			}
+		},
+		"Inquiry": {
+			"type": "object",
+			"required": [
+				"uri"
+			],
+			"description": "A searchable object",
+			"properties": {
+				"label": {
+					"$ref": "#/definitions/Label"
+				},
+				"uri": {
+					"type": "string"
+				},
+				"parameters": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"parameters": {
+								"$ref": "#/definitions/Parameters"
+							}
+						}
+					}
+				}
+			},
+			"xml": {
+				"name": "data"
+			}
+		},
+		"Parameters": {
+			"type": "object",
+			"properties": {
+				"parameters": {
+					"type": "array",
+					"description": "A collection of parameter objects",
+					"items": {
+						"$ref": "#/definitions/Parameter"
+					}
+				}
+			},
+			"xml": {
+				"name": "parameters"
+			}
+		},
+		"Parameter": {
+			"type": "object",
+			"description": "A parameter used in URI",
+			"properties": {
+				"inPath": {
+					"type": "boolean"
+				},
+				"replace_pattern": {
+					"type": "string"
+				}
+			},
+			"xml": {
+				"name": "parameter"
+			}
+		},
+		"Messages": {
+			"type": "object",
+			"description": "A collection of message objects",
+			"properties": {
+				"messages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Message"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "messages"
+			}
+		},
+		"Message": {
+			"type": "object",
+			"description": "A message used for communication of data to user or internal (API to API)",
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"user",
+						"internal"
+					]
+				},
+				"message": {
+					"type": "string"
+				},
+				"origin": {
+					"type": "string",
+					"enum": [
+						"radi",
+						"werc_smart",
+						"prospector",
+						"safeware"
+					]
+				}
+			},
+			"xml": {
+				"name": "message"
 			}
 		}
 	}
