@@ -78,12 +78,12 @@
 		"Service": {
 			"type": "object",
 			"required": [
-				"id",
+				"service_id",
 				"name"
 			],
 			"description": "Identifies the individual branches of the business unit",
 			"properties": {
-				"id": {
+				"service_id": {
 					"type": "integer",
 					"format": "int32"
 				},
@@ -122,12 +122,12 @@
 		"Metric": {
 			"type": "object",
 			"required": [
-				"id",
+				"metric_id",
 				"name"
 			],
 			"description": "A collection of labels and data_set objects",
 			"properties": {
-				"id": {
+				"metric_id": {
 					"type": "integer",
 					"format": "int32"
 				},
@@ -245,12 +245,12 @@
 		"Message": {
 			"type": "object",
 			"required": [
-				"id",
+				"message_id",
 				"name"
 			],
 			"description": "A message used for communication of data to user or internal (API to API)",
 			"properties": {
-				"id": {
+				"message_id": {
 					"type": "integer",
 					"format": "int32"
 				},
