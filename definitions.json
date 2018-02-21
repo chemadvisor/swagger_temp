@@ -1,0 +1,291 @@
+{
+	"definitions": {
+		"ApiResponseMessage": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"type": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
+		},
+		"Links": {
+			"type": "object",
+			"properties": {
+				"link": {
+					"type": "array",
+					"description": "A collection of link objects",
+					"items": {
+						"$ref": "#/definitions/Link"
+					}
+				}
+			},
+			"xml": {
+				"name": "links"
+			}
+		},
+		"Link": {
+			"type": "object",
+			"required": [
+				"allow",
+				"content_type",
+				"href",
+				"rel"
+			],
+			"properties": {
+				"rel": {
+					"type": "string"
+				},
+				"allow": {
+					"type": "string",
+					"description": "The HTTP methods allowed on the href"
+				},
+				"href": {
+					"type": "string"
+				},
+				"content_type": {
+					"type": "string"
+				}
+			},
+			"xml": {
+				"name": "link"
+			}
+		},
+		"Services": {
+			"type": "object",
+			"description": "A collection of service objects",
+			"properties": {
+				"services": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Service"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "services"
+			}
+		},
+		"Service": {
+			"type": "object",
+			"required": [
+				"id",
+				"name"
+			],
+			"description": "Identifies the individual branches of the business unit",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "service"
+			}
+		},
+		"Metrics": {
+			"type": "object",
+			"description": "A collection of metric objects",
+			"properties": {
+				"metrics": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Metric"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "metrics"
+			}
+		},
+		"Metric": {
+			"type": "object",
+			"required": [
+				"id",
+				"name"
+			],
+			"description": "A collection of labels and data_set objects",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"name": {
+					"type": "string"
+				},
+				"labels": {
+					"$ref": "#/definitions/Labels"
+				},
+				"data_sets": {
+					"$ref": "#/definitions/DataSets"
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "metric"
+			}
+		},
+		"Labels": {
+			"type": "object",
+			"description": "A collection of label objects",
+			"properties": {
+				"labels": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Label"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "labels"
+			}
+		},
+		"Label": {
+			"type": "object",
+			"required": [
+				"value"
+			],
+			"properties": {
+				"value": {
+					"type": "string"
+				},
+				"link": {
+					"$ref": "#/definitions/Link"
+				}
+			},
+			"xml": {
+				"name": "label"
+			}
+		},
+		"DataSets": {
+			"type": "object",
+			"description": "A collection of data_set objects",
+			"properties": {
+				"data_sets": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DataSet"
+					}
+				}
+			},
+			"xml": {
+				"name": "data_sets"
+			}
+		},
+		"DataSet": {
+			"type": "object",
+			"description": "A data_set object",
+			"properties": {
+				"label": {
+					"$ref": "#/definitions/Label"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"type": "string"
+							},
+							"link": {
+								"$ref": "#/definitions/Link"
+							}
+						}
+					}
+				}
+			},
+			"xml": {
+				"name": "data_set"
+			}
+		},
+		"Messages": {
+			"type": "object",
+			"description": "A collection of message objects",
+			"properties": {
+				"messages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Message"
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "messages"
+			}
+		},
+		"Message": {
+			"type": "object",
+			"required": [
+				"id",
+				"name"
+			],
+			"description": "A message used for communication of data to user or internal (API to API)",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"name": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"user",
+						"internal"
+					]
+				},
+				"message": {
+					"type": "string"
+				},
+				"origin": {
+					"type": "string",
+					"enum": [
+						"radi",
+						"werc_smart",
+						"prospector",
+						"safeware"
+					]
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
+				}
+			},
+			"xml": {
+				"name": "message"
+			}
+		}
+	}
+}
