@@ -83,13 +83,7 @@
 					"format": "int32"
 				},
 				"name": {
-					"type": "string",
-					"enum": [
-						"radi",
-						"wercs_smart",
-						"prospector",
-						"safeware"
-					]
+					"type": "string"
 				},
 				"metrics": {
 					"$ref": "#/definitions/Metrics"
