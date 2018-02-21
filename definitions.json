@@ -1,3 +1,4 @@
+{
 	"definitions": {
 		"ApiResponseMessage": {
 			"type": "object",
@@ -76,7 +77,11 @@
 		},
 		"Service": {
 			"type": "object",
-			"description": "Collection of metrics and messages",
+			"required": [
+				"id",
+				"name"
+			],
+			"description": "Identifies the individual branches of the business unit",
 			"properties": {
 				"id": {
 					"type": "integer",
@@ -85,11 +90,8 @@
 				"name": {
 					"type": "string"
 				},
-				"metrics": {
-					"$ref": "#/definitions/Metrics"
-				},
-				"messages": {
-					"$ref": "#/definitions/Messages"
+				"description": {
+					"type": "string"
 				},
 				"links": {
 					"$ref": "#/definitions/Links"
@@ -119,8 +121,19 @@
 		},
 		"Metric": {
 			"type": "object",
+			"required": [
+				"id",
+				"name"
+			],
 			"description": "A collection of labels and data_set objects",
 			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"name": {
+					"type": "string"
+				},
 				"labels": {
 					"$ref": "#/definitions/Labels"
 				},
@@ -198,8 +211,7 @@
 						"type": "object",
 						"properties": {
 							"value": {
-								"type": "integer",
-								"format": "int32"
+								"type": "string"
 							},
 							"link": {
 								"$ref": "#/definitions/Link"
@@ -232,8 +244,19 @@
 		},
 		"Message": {
 			"type": "object",
+			"required": [
+				"id",
+				"name"
+			],
 			"description": "A message used for communication of data to user or internal (API to API)",
 			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"name": {
+					"type": "string"
+				},
 				"title": {
 					"type": "string"
 				},
@@ -255,13 +278,14 @@
 						"prospector",
 						"safeware"
 					]
-					}
 				},
 				"links": {
 					"$ref": "#/definitions/Links"
+				}
 			},
 			"xml": {
 				"name": "message"
 			}
 		}
 	}
+}
