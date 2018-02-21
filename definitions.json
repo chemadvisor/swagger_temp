@@ -255,7 +255,10 @@
 						"prospector",
 						"safeware"
 					]
-				}
+					}
+				},
+				"links": {
+					"$ref": "#/definitions/Links"
 			},
 			"xml": {
 				"name": "message"
