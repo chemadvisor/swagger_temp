@@ -131,6 +131,20 @@
 					"type": "integer",
 					"format": "int32"
 				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"area",
+						"bar",
+						"column",
+						"line",
+						"pie",
+						"donut",
+						"tabular",
+						"label",
+						"map"
+					]
+				},
 				"name": {
 					"type": "string"
 				},
@@ -273,10 +287,14 @@
 				"origin": {
 					"type": "string",
 					"enum": [
-						"radi",
-						"werc_smart",
+						"navigator",
+						"wercsmart",
 						"prospector",
-						"safeware"
+						"mysds",
+						"goodguide",
+						"purview",
+						"training",
+						"regulatory-data"
 					]
 				},
 				"links": {
