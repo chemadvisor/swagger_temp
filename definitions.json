@@ -1,4 +1,4 @@
-
+{
 	"definitions": {
 		"ApiResponseMessage": {
 			"type": "object",
@@ -306,4 +306,4 @@
 			}
 		}
 	}
-
+}
