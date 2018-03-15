@@ -84,8 +84,7 @@
 			"description": "Identifies the individual branches of the business unit",
 			"properties": {
 				"service_id": {
-					"type": "integer",
-					"format": "int32"
+					"type": "string"
 				},
 				"name": {
 					"type": "string"
