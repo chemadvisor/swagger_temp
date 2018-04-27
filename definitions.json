@@ -142,7 +142,8 @@
 						"tabular",
 						"label",
 						"map",
-						"timeline"
+						"timeline",
+						"grid"
 					]
 				},
 				"name": {
